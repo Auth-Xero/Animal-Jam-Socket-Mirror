@@ -7,7 +7,7 @@ const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-const port = 8080
+const port = 8088
 var currentserver = "";
 app.get("/",function(req, res) {
     res.send("Server Running on port "+process.env.PORT || 9001);
@@ -28,7 +28,12 @@ function updateFlashvars(){
             console.log(error);
           });
   }
-
+app.listen(port, () => {
+    console.log("HTTP server is running on port "+ 8088);
+    updateFlashvars();
+    console.log(currentserver);
+    }); 
+    
 //Socket stuff
 //---------------------------------------------------------
     var server = new net.Server(); 
@@ -78,9 +83,3 @@ client.destroy();
         console.log("Error in Server : "+error);
     })
     server.listen(process.env.PORT || 9001);
-app.listen(port, () => {
-    console.log("HTTP server is running on port "+ 8080);
-    updateFlashvars();
-    console.log(currentserver);
-    }); 
-    
