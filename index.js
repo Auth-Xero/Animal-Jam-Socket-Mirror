@@ -7,7 +7,7 @@ const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-const port = 8080;
+const port = 80;
 const sPort = 443;
 var currentserver = "";
 app.get("/",function(req, res) {
