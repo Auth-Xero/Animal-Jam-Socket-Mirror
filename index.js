@@ -55,7 +55,7 @@ app.listen(port, () => {
             console.log("Connected to Animal Jam Server");  
             connectedToAJ = true;         
         })
-        eSocket.on('error', function(){
+        eSocket.on('error', function(error){
             console.log("Error in Socket : "+error);
             connectedToAJ = false;
         })
@@ -66,7 +66,7 @@ app.listen(port, () => {
             console.log("Client disconnected");
           eSocket.destroy();
         })
-        client.on('error', function(){
+        client.on('error', function(error){
             console.log("Error in Client Socket : "+error);
             connectedToAJ = false;
             client.destroy();
@@ -78,7 +78,7 @@ connectedToAJ = false;
 client.destroy();
     }
     });
-    server.on('error', function(){
+    server.on('error', function(error){
         console.log("Error in Server : "+error);
     })
     server.listen(443, "127.0.0.1");
