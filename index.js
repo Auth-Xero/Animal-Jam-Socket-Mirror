@@ -7,10 +7,11 @@ const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-const port = process.env.PORT;
+const port = 8080;
+const sPort = 443;
 var currentserver = "";
 app.get("/",function(req, res) {
-    res.send("Server Running on port "+9081);
+    res.send("Server Running on port "+sPort);
 })
 function updateFlashvars(){
  axios.request({
@@ -81,4 +82,4 @@ client.destroy();
     server.on('error', function(error){
         console.log("Error in Server : "+error);
     })
-    server.listen(9081);
+    server.listen(sPort);
