@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 const port = process.env.PORT;
 var currentserver = "";
+var currentServerIP = "127.0.0.1";
 app.get("/",function(req, res) {
     res.send("Server Running on port "+9081);
 })
@@ -28,10 +29,21 @@ function updateFlashvars(){
             console.log(error);
           });
   }
+function updateIP(){
+ axios.request({
+      url:'https://api.ipify.org',
+      method:"GET"
+  }).then(function (resp) {
+            currentServerIP = resp.data;
+          })      
+          .catch(function (error) {
+            console.log(error);
+          });
+  }
 app.listen(port, () => {
     console.log("HTTP server is running on port "+ port);
     updateFlashvars();
-    console.log(currentserver);
+    updateIP();
     }); 
     
 //Socket stuff
@@ -82,4 +94,4 @@ client.destroy();
     server.on('error', function(error){
         console.log("Error in Server : "+error);
     })
-    server.listen(9081);
+    server.listen(9081,currentServerIP);
