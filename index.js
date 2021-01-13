@@ -7,10 +7,10 @@ const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-const port = process.env.PORT || 8080
+const port = 8080
 var currentserver = "";
 app.get("/",function(req, res) {
-    res.send("Server Running on port 443");
+    res.send("Server Running on port "+process.env.PORT || 9001);
 })
 function updateFlashvars(){
  axios.request({
@@ -28,11 +28,7 @@ function updateFlashvars(){
             console.log(error);
           });
   }
-app.listen(port, () => {
-    console.log("HTTP server is running on port "+ port);
-    updateFlashvars();
-    console.log(currentserver);
-    }); 
+
 //Socket stuff
 //---------------------------------------------------------
     var server = new net.Server(); 
@@ -81,5 +77,10 @@ client.destroy();
     server.on('error', function(error){
         console.log("Error in Server : "+error);
     })
-    server.listen(9339);
+    server.listen(process.env.PORT || 9001);
+app.listen(port, () => {
+    console.log("HTTP server is running on port "+ 8080);
+    updateFlashvars();
+    console.log(currentserver);
+    }); 
     
