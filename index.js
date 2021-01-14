@@ -6,7 +6,7 @@ const dns = require('dns');
 const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-const port = 80;
+const port = 8080;
 const sPort = 443;
 var logData = true;
 var currentserver = "";
