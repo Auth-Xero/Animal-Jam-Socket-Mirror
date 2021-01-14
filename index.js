@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const port = 80;
 const sPort = 443;
-var logData = false;
+var logData = true;
 var currentserver = "";
 app.get("/",function(req, res) {
     res.send("Server Running on port "+sPort);
