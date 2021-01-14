@@ -8,7 +8,7 @@
 
 ## Features
 
-> - Supports multiple connections             
+- Supports multiple connections             
 - Can be hosted on vps with a few tweaks (change flashvars location)    
 - Gives the user the ability to view sent and received traffic in plain text    
 
